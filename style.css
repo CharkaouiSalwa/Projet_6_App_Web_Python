@@ -1,0 +1,165 @@
+
+html {
+	margin: 0;
+
+	font-family: helvetica;
+	max-width: 1920px;
+ }
+
+h1 {
+	margin: 0;
+	color: #656565;
+	font-size: 2rem;
+ }
+
+
+.title2  {
+    text-align: center;
+}
+.title-film {
+    margin-left: 16px;
+}
+
+
+.accueil, .cat
+{
+    float: right;
+}
+#film-card, #film-category, #film-drama, #film-action
+{
+    margin-left:14em
+}
+
+#cadre-film {
+border: 3px solid #000;
+}
+
+.film-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.play-button,.info-button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+
+}
+.play-button {
+  position: relative;
+    left: 2em;
+
+}
+
+.play-button:hover,.info-button:hover {
+  background-color: #555;
+}
+
+#top-films-container {
+  margin: 20px 0;
+}
+
+a{
+  color: white;
+   list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+.img-film{
+position: relative;
+left: 75em;
+}
+
+.img-film img{
+margin-top: -102px;
+}
+
+.top-film-img{
+  white-space: pre-wrap;
+  min-height: 325px;
+}
+
+.top-film-img {
+
+  margin-right: 10px; /* Pour ajouter un espace entre chaque image */
+  width: 120px;
+  display: inline-table;
+
+}
+ .top-film-img img {
+  margin: 10px;
+
+}
+
+.cookiesContent {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  border-radius: 20px;
+  padding: 30px 30px 70px;
+  button.close {
+    width: 30px;
+    font-size: 20px;
+    color: #c0c5cb;
+    align-self: flex-end;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 10px;
+  }
+  img {
+    width: 82px;
+    margin-bottom: 15px;
+  }
+  p {
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+  button.accept {
+    background-color: #ed6755;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    padding: 14px;
+    font-size: 16px;
+    color: white;
+    box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+  }
+
+
