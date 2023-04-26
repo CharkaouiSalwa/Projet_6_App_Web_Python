@@ -34,7 +34,7 @@ fetch('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score')
       <div class="row">
           <div class="film-info">
             <h2 class ="title-film" >${meilleurFilm.title}</h2>
-            <button class="play-button"  onclick="ouvrirModal()">Play</button>
+            <button class="play-button" onclick="ouvrirModal('${meilleurFilm.url}')">Play</button>
             <div class="img-film">
             <img src="${meilleurFilm.image_url}" alt="${meilleurFilm.title}" >
             </div>
@@ -45,7 +45,6 @@ fetch('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score')
   .catch(error => console.error(error));
 
 
-
 var page = 1;
 let allFilms = [];
 while (page < 3)
@@ -54,11 +53,9 @@ while (page < 3)
       .then(response => response.json())
       .then(data => {
         let topFilms = data.results;
-        console.log(topFilms)
         allFilms = allFilms.concat(topFilms);
         if (allFilms.length == 10){
             allFilms = allFilms.slice(1,8);
-            console.log(allFilms);
             var element = document.getElementById("top-films-list");
             element.classList.add("active");
             const topFilmsList = document.getElementById('top-films-list');
@@ -66,7 +63,7 @@ while (page < 3)
               const filmCard = document.getElementById('film-card');
               filmCard.innerHTML += `
                     <div class="top-film-img">
-                        <img src="${film.image_url}" alt="${film.title}" onclick="ouvrirModal()">
+                        <img src="${film.image_url}" alt="${film.title}" onclick="ouvrirModal('${film.url}')" >
               `;
               topFilmsList.appendChild(filmCard);
             });
@@ -86,11 +83,10 @@ while (page < 3)
       .then(response => response.json())
       .then(data => {
         let topFilmGenre = data.results;
-        console.log(topFilmGenre)
         allFilmsGenre = allFilmsGenre.concat(topFilmGenre);
         if (allFilmsGenre.length == 10){
             allFilmsGenre = allFilmsGenre.slice(1,8);
-            console.log(allFilmsGenre);
+
             var element = document.getElementById("top-films-genre");
         if (allFilmsGenre.length >= 4){
 
@@ -104,7 +100,7 @@ while (page < 3)
               const filmGenre = document.getElementById('film-category');
               filmGenre.innerHTML += `
                     <div class="top-film-img">
-                        <img src="${film.image_url}" alt="${film.title}" onclick="ouvrirModal()">
+                        <img src="${film.image_url}" alt="${film.title}" onclick="ouvrirModal('${film.url}')">
                     </div>
               `;
               topFilmGenre.appendChild(filmGenre);
@@ -125,11 +121,11 @@ while (page < 3)
       .then(response => response.json())
       .then(data => {
         let topFilmDrama = data.results;
-        console.log(topFilmDrama)
+
         allFilmsDrama = allFilmsDrama.concat(topFilmDrama);
         if (allFilmsDrama.length == 10){
             allFilmsDrama = allFilmsDrama.slice(1,8);
-            console.log(allFilmsDrama);
+
             var element = document.getElementById("top-films-drama");
         if (allFilmsDrama.length >= 4){
 
@@ -167,21 +163,20 @@ while (page < 3)
       .then(response => response.json())
       .then(data => {
         let topFilmAction = data.results;
-        console.log(topFilmAction)
+
         allFilmsAction = allFilmsAction.concat(topFilmAction);
         if (allFilmsAction.length == 10){
             allFilmsAction = allFilmsAction.slice(1,8);
-            console.log(allFilmsAction);
             var element = document.getElementById("top-films-action");
             element.classList.add("active");
-
             const topFilmAction = document.getElementById('top-films-action');
+
             allFilmsAction.forEach(film => {
               const filmAction = document.getElementById('film-action');
               filmAction.innerHTML += `
 
                     <div class="top-film-img">
-                        <img src="${film.image_url}" alt="${film.title}" onclick="ouvrirModal()">
+                        <img src="${film.image_url}" alt="${film.title}" onclick="ouvrirModal('${film.url}')">
                     </div>
               `;
               topFilmAction.appendChild(filmAction);
@@ -199,10 +194,10 @@ while (page < 3)
 const modal = document.getElementById("myModal");
 
 // Récupérer le bouton de lecture
-const playBtn = document.querySelector(".play-button");
+//const playBtn = document.querySelector(".play-button");
 
 // Ajouter un événement "click" au bouton de lecture
-playBtn.addEventListener("click", ouvrirModal);
+//playBtn.addEventListener("click", ouvrirModal);
 // Récupérer le bouton de fermeture
 const closeBtn = document.querySelector(".close");
 
@@ -211,41 +206,96 @@ closeBtn.addEventListener("click", fermerModal);
 
 
 // Fonction pour ouvrir la fenêtre modale
-function ouvrirModal() {
+
+function testouvrirModal(){
   // Récupérer les informations du film
-  const film = {
-    titre: "Titre du film",
-    genre: "Genre complet du film",
-    dateSortie: "Date de sortie",
-    rated: "Rated",
-    scoreImdb: "Score IMDB",
-    realisateur: "Réalisateur",
-    acteurs: "Liste des acteurs",
-    duree: "Durée",
-    pays: "Pays d'origine",
-    boxOffice: "Résultat au box office",
-    resume: "Résumé du film"
-  };
+   var modal = document.getElementById("myModal");
+  // Récupération des données depuis l'API
+  fetch('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score')
+  .then(response=> response.json())
+  .then(dataurl=> {
+   var myurl = dataurl.results[0].url;
+   fetch(myurl)
+    .then(response => response.json())
+    .then(data => {
+      // Affichage des données dans le modal
 
-  // Afficher les informations dans la fenêtre modale
-  document.getElementById("modal-title").textContent = film.titre;
-  document.getElementById("modal-genre").textContent = film.genre;
-  document.getElementById("modal-release").textContent = film.dateSortie;
-  document.getElementById("modal-rated").textContent = film.rated;
-  document.getElementById("modal-imdb").textContent = film.scoreImdb;
-  document.getElementById("modal-director").textContent = film.realisateur;
-  document.getElementById("modal-actors").textContent = film.acteurs;
-  document.getElementById("modal-duration").textContent = film.duree;
-  document.getElementById("modal-country").textContent = film.pays;
-  document.getElementById("modal-box-office").textContent = film.boxOffice;
-  document.getElementById("modal-summary").textContent = film.resume;
-
-  // Afficher la fenêtre modale
+      document.getElementById("modal-title").innerHTML = data.original_title;
+      document.getElementById("modal-genre").innerHTML = "Genre : " + data.genres.join(", ");
+      document.getElementById("modal-release").innerHTML = "Date de sortie : " + data.year;
+      document.getElementById("modal-rated").innerHTML = "Classification : " + data.rated;
+      document.getElementById("modal-imdb").innerHTML = "IMDb : " + data.imdb_score;
+      document.getElementById("modal-director").innerHTML = "Réalisateur : " + data.directors.join(", ");
+      document.getElementById("modal-actors").innerHTML = "Acteurs : " + data.actors.join(", ");
+      document.getElementById("modal-duration").innerHTML = "Durée : " + data.duration + " minutes";
+      document.getElementById("modal-country").innerHTML = "Pays : " + data.countries.join(", ");
+      document.getElementById("modal-box-office").innerHTML = "Box-office : " + data.worldwide_gross_income + " $";
+      document.getElementById("modal-summary").innerHTML = "Résumé : " + data.description;
+    })
+    .catch(error => console.log(error));
+  })
+   // Affichage du modal
   modal.style.display = "block";
 }
 
-// Fonction pour fermer la fenêtre modale
+function ouvrirModal(myurl){
+  // Récupérer les informations du film
+   var modal = document.getElementById("myModal");
+   fetch(myurl)
+    .then(response => response.json())
+    .then(data => {
+
+      // Affichage des données dans le modal
+      document.getElementById("modal-title").innerHTML = data.original_title;
+      document.getElementById("modal-genre").innerHTML = "Genre : " + data.genres.join(", ");
+      document.getElementById("modal-release").innerHTML = "Date de sortie : " + data.year;
+      document.getElementById("modal-rated").innerHTML = "Classification : " + data.rated;
+      document.getElementById("modal-imdb").innerHTML = "IMDb : " + data.imdb_score;
+      document.getElementById("modal-director").innerHTML = "Réalisateur : " + data.directors.join(", ");
+      document.getElementById("modal-actors").innerHTML = "Acteurs : " + data.actors.join(", ");
+      document.getElementById("modal-duration").innerHTML = "Durée : " + data.duration + " minutes";
+      document.getElementById("modal-country").innerHTML = "Pays : " + data.countries.join(", ");
+      document.getElementById("modal-box-office").innerHTML = "Box-office : " + data.worldwide_gross_income + " $";
+      document.getElementById("modal-summary").innerHTML = "Résumé : " + data.description;
+    })
+    .catch(error => console.log(error));
+   // Affichage du modal
+  modal.style.display = "block";
+}
+
+
+
+
+
+
+
+
 function fermerModal() {
+  // Récupération du modal
+  var modal = document.getElementById("myModal");
+
+  // Fermeture du modal
   modal.style.display = "none";
 }
 
+
+const carouselItems = document.querySelector(".carousel-items");
+const prevBtn = document.querySelector(".prev-btn");
+const nextBtn = document.querySelector(".next-btn");
+const carouselItemWidth = document.querySelector(".carousel-item").offsetWidth;
+const totalCarouselItems = 7;
+let currentCarouselItem = 0;
+
+prevBtn.addEventListener("click", () => {
+  if (currentCarouselItem > 0) {
+    currentCarouselItem--;
+    carouselItems.style.transform = `translateX(-${currentCarouselItem * carouselItemWidth}px)`;
+  }
+});
+
+nextBtn.addEventListener("click", () => {
+  if (currentCarouselItem < totalCarouselItems - 1) {
+    currentCarouselItem++;
+    carouselItems.style.transform = `translateX(-${currentCarouselItem * carouselItemWidth}px)`;
+  }
+});

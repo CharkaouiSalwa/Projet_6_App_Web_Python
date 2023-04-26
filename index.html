@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Just Stream It</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" ></script>
+
   </head>
   <body>
 
@@ -29,6 +29,7 @@
 
   <div id="cadre-film" >
   <!-- Contenu à l'intérieur du cadre -->
+
   </div>
 
 
@@ -36,7 +37,7 @@
 
 <div id="myModal" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="fermerModal()">&times;</span>
+      <button class="close" onclick="fermerModal()">&times;</button>
     <h2 id="modal-title"></h2>
     <p id="modal-genre"></p>
     <p id="modal-release"></p>
@@ -56,15 +57,29 @@
 
 
 
+
 <h3 class = "title2">Films les mieux notés</h3>
 
-      <div id="top-films-list">
+     <!-- <div id="top-films-list">
       <div id="film-card"></div>
 
       </div>
 
   </div>
-
+-->
+  <div id="top-films-list">
+      <div id="film-card">
+  <div class="carousel">
+    <div class="carousel-items">
+      <div class="carousel-item">
+       </div>
+      </div>
+      <div class="carousel-navigation">
+      <button class="prev-btn">&lt;</button>
+      <button class="next-btn">&gt;</button>
+    </div>
+      </div>
+      </div></div>
 
   <h3 class = "title2">Romance</h3>
   <div id="top-films-genre">
@@ -111,6 +126,7 @@
 
 
 
-
+<script src="script.js" ></script>
   </body>
+
 </html>
