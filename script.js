@@ -263,13 +263,6 @@ function ouvrirModal(myurl){
   modal.style.display = "block";
 }
 
-
-
-
-
-
-
-
 function fermerModal() {
   // Récupération du modal
   var modal = document.getElementById("myModal");
@@ -279,23 +272,4 @@ function fermerModal() {
 }
 
 
-const carouselItems = document.querySelector(".carousel-items");
-const prevBtn = document.querySelector(".prev-btn");
-const nextBtn = document.querySelector(".next-btn");
-const carouselItemWidth = document.querySelector(".carousel-item").offsetWidth;
-const totalCarouselItems = 7;
-let currentCarouselItem = 0;
 
-prevBtn.addEventListener("click", () => {
-  if (currentCarouselItem > 0) {
-    currentCarouselItem--;
-    carouselItems.style.transform = `translateX(-${currentCarouselItem * carouselItemWidth}px)`;
-  }
-});
-
-nextBtn.addEventListener("click", () => {
-  if (currentCarouselItem < totalCarouselItems - 1) {
-    currentCarouselItem++;
-    carouselItems.style.transform = `translateX(-${currentCarouselItem * carouselItemWidth}px)`;
-  }
-});
