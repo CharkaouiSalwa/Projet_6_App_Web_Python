@@ -27,7 +27,7 @@ h1 {
 {
     float: right;
 }
-#film-card, #film-category, #film-drama, #film-action
+#film-card, #film-category, #film-drama, #film-crime
 {
     margin-left:14em
 }
@@ -168,18 +168,22 @@ display: none;
 }
 
 
-.prev-btn, .next-btn {
+#prev-btn, #next-btn {
   padding: 10px;
   font-size: 24px;
 
 }
-.next-btn {
+#next-btn{
 float:right;
 clear: both;
 margin-top: 130px;
 }
-.prev-btn {
+#prev-btn {
  margin-left: -76px;
    position: absolute;
   bottom: 0;
  }
+
+ .hidden {
+  display: none;
+}
