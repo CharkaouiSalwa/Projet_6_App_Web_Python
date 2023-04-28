@@ -185,7 +185,7 @@ function ouvrirModal(myurl){
     .then(data => {
 
       // Affichage des données dans le modal
-      document.getElementById("modal-title").innerHTML = data.original_title;
+      document.getElementById("modal-title").innerHTML = "Titre : " + data.original_title;
       document.getElementById("modal-genre").innerHTML = "Genre : " + data.genres.join(", ");
       document.getElementById("modal-release").innerHTML = "Date de sortie : " + data.year;
       document.getElementById("modal-rated").innerHTML = "Classification : " + data.rated;
