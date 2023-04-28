@@ -26,7 +26,7 @@ h1 {
 }
 #top-films-list, #top-films-genre, #top-films-drama, #top-films-crime
 {
-    margin-left:14em;
+    margin-left:20em;
 }
 
 #cadre-film {
@@ -94,9 +94,7 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: #111;
-}
+
 .img-film{
 position: relative;
 left: 75em;
@@ -109,32 +107,18 @@ margin-top: -102px;
 .top-film-img,.top-film-img-gnr,.top-film-img-dr,.top-film-img-cr{
   white-space: pre-wrap;
   min-height: 325px;
+   margin-right: 10px;
 }
 
 .top-film-img,.top-film-img-gnr ,.top-film-img-dr,.top-film-img-cr{
-
   margin-right: 10px; /* Pour ajouter un espace entre chaque image */
   width: 120px;
   display: inline-table;
-
 }
  .top-film-img img,.top-film-img-gnr, .top-film-img-dr,.top-film-img-cr {
   margin: 10px;
 
 }
-
-.cookiesContent {
-  width: 320px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
-  color: #000;
-  text-align: center;
-  border-radius: 20px;
-  padding: 30px 30px 70px;
-  }
-
 
 .modal-content {
           position: fixed;
@@ -171,26 +155,71 @@ display: none;
 
 }
 #next-btn{
-float:right;
+margin-left: 36.5em;
 clear: both;
 margin-top: 130px;
+position: absolute;
+ bottom: 0;
 }
 #prev-btn {
  margin-left: -76px;
  position: absolute;
  bottom: 0;
  }
-#btn-prec{
-float: right;
- margin-top: 200px;
- clear: both;
- padding: 10px;
+
+
+#prec-btn, #suiv-btn {
+  padding: 10px;
+  font-size: 24px;
+}
+#suiv-btn{
+margin-left: 36.5em;
+position:absolute;
+bottom:-360px;
+}
+#prec-btn {
+ margin-left: -76px;
+ position:absolute;
+bottom:-360px;
+
  }
- #btn-suiv{
- margin-left: -67px;
-  position: absolute;
-  margin-top: 200px;
+
+#prec-btn-1, #suiv-btn-1 {
+  padding: 10px;
+  font-size: 24px;
+}
+
+#suiv-btn-1{
+margin-left: 36.5em;
+position:absolute;
+bottom:-790px;
+}
+
+#prec-btn-1 {
+ margin-left: -76px;
+ position:absolute;
+bottom:-800px;
+
  }
+
+#prec-btn-2, #suiv-btn-2 {
+  padding: 10px;
+  font-size: 24px;
+}
+
+#suiv-btn-2{
+margin-left: 36.5em;
+position:absolute;
+bottom:-1160px;
+}
+
+#prec-btn-2 {
+ margin-left: -76px;
+ position:absolute;
+bottom:-1160px;
+
+ }
+
 .hidden {
   display: none;
 }
